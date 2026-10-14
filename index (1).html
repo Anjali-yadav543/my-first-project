@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anjali Yadav | Teacher Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f7f6;--surface:#fff;--ink:#17302c;--muted:#5a706c;--brand:#0f5c54;--chalk:#f2b632;--line:#d8e3e0;--board:#12332e;--on-board:#eaf3f1;--shadow:0 8px 24px rgba(15,60,54,.10)}
+:root[data-theme=dark]{--bg:#0b1615;--surface:#122321;--ink:#e6f0ee;--muted:#9bb3af;--brand:#4fc2b3;--chalk:#f2b632;--line:#23403c;--board:#0a1f1c;--on-board:#eaf3f1;--shadow:0 8px 24px rgba(0,0,0,.4)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0b1615;--surface:#122321;--ink:#e6f0ee;--muted:#9bb3af;--brand:#4fc2b3;--line:#23403c;--board:#0a1f1c;--shadow:0 8px 24px rgba(0,0,0,.4)}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:17px;transition:background .3s,color .3s}
+h1,h2,h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;line-height:1.15}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--chalk);outline-offset:2px}
+.side{position:fixed;inset:0 auto 0 0;width:260px;background:var(--board);color:var(--on-board);padding:24px 16px;display:flex;flex-direction:column;gap:6px;overflow-y:auto;z-index:30;transition:transform .3s}
+.brand{font-family:'Bricolage Grotesque';font-weight:800;font-size:1.4rem;padding:0 12px 18px;border-bottom:1px dashed rgba(234,243,241,.3);margin-bottom:10px}
+.brand small{display:block;font:400 .85rem 'Source Sans 3';opacity:.7}
+.side a.nav{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--on-board);opacity:.85;transition:.2s}
+.side a.nav:hover{background:rgba(255,255,255,.1);opacity:1;transform:translateX(4px)}
+.side a.nav.active{background:var(--chalk);color:#2a2000;opacity:1;font-weight:600}
+.top{display:none;position:fixed;top:0;left:0;right:0;height:58px;background:var(--board);color:var(--on-board);align-items:center;justify-content:space-between;padding:0 14px;z-index:40}
+.btn{cursor:pointer;border:0;border-radius:999px;padding:11px 22px;font:600 1rem 'Source Sans 3';text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--chalk);color:#2a2000}
+.btn.ghost{background:transparent;border:2px solid var(--brand);color:var(--brand)}
+.icon{background:rgba(255,255,255,.12);color:inherit;border:0;border-radius:10px;width:42px;height:42px;font-size:1.2rem;cursor:pointer;transition:transform .3s}
+.icon:hover{transform:rotate(20deg)}
+.theme{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding:12px;border-top:1px dashed rgba(234,243,241,.3)}
+main{margin-left:260px;min-height:100vh;padding:56px clamp(20px,5vw,72px)}
+.page{display:none;max-width:980px}
+.page.show{display:block;animation:in .45s ease}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+h2.t{font-size:clamp(2rem,4vw,2.8rem);margin-bottom:6px}
+.sub{color:var(--muted);margin-bottom:30px;max-width:60ch}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;min-height:70vh}
+.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:800}
+.role{font-size:1.4rem;color:var(--brand);font-weight:600;min-height:2em;margin:10px 0 14px}
+.role::after{content:"|";animation:blink 1s steps(1) infinite;color:var(--chalk)}
+@keyframes blink{50%{opacity:0}}
+.row{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.board{background:var(--board);color:var(--on-board);border:8px solid #8a5a2b;border-radius:14px;padding:26px;font-family:'Bricolage Grotesque';box-shadow:var(--shadow);animation:float 5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+.board p{margin:6px 0;font-size:1.15rem}.board .c{color:var(--chalk)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;margin-top:30px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.stat b{font:800 2rem 'Bricolage Grotesque';color:var(--brand);display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;gap:10px}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.card .em{font-size:2rem}.card p{color:var(--muted);flex:1}
+.tl{border-left:3px solid var(--brand);padding-left:22px;display:grid;gap:22px}
+.tl div{position:relative}.tl div::before{content:"";position:absolute;left:-30px;top:8px;width:13px;height:13px;border-radius:50%;background:var(--chalk);border:3px solid var(--bg)}
+.tl small{color:var(--brand);font-weight:600}
+.bar{margin-bottom:16px}.bar span{display:flex;justify-content:space-between;font-weight:600}
+.track{height:10px;background:var(--line);border-radius:9px;overflow:hidden;margin-top:5px}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--chalk));border-radius:9px;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.tags{display:flex;flex-wrap:wrap;gap:8px}.tags span{background:var(--surface);border:1px solid var(--line);padding:5px 14px;border-radius:999px;font-size:.95rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.resume{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:clamp(20px,4vw,40px)}
+.resume h3{border-bottom:2px solid var(--chalk);display:inline-block;margin:20px 0 8px}
+form{display:grid;gap:14px}
+input,textarea{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit}
+.toast{position:fixed;bottom:22px;right:22px;background:var(--board);color:var(--on-board);padding:12px 20px;border-radius:10px;opacity:0;transform:translateY(20px);transition:.3s;z-index:60;pointer-events:none}
+.toast.on{opacity:1;transform:none}
+footer{margin-top:60px;color:var(--muted);font-size:.9rem}
+.scrim{display:none}
+@media(max-width:860px){
+.top{display:flex}.side{transform:translateX(-100%);padding-top:70px}.side.open{transform:none}
+.scrim.on{display:block;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:25}
+main{margin-left:0;padding:84px 20px 40px}.hero,.two{grid-template-columns:1fr}.hero{min-height:auto}}
+@media print{.side,.top,.noprint,footer{display:none!important}main{margin:0;padding:0}.page{display:none!important}#resume{display:block!important}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top"><strong style="font-family:'Bricolage Grotesque'">Anjali Yadav</strong><button class="icon" id="burger" aria-label="Open menu">☰</button></header>
+<div class="scrim" id="scrim"></div>
+<nav class="side" id="side" aria-label="Main menu">
+<div class="brand">Anjali Yadav<small>Computer Teacher & Digital Skills Trainer</small></div>
+<a class="nav" href="#home">🏠 Home</a>
+<a class="nav" href="#about">👩‍🏫 About</a>
+<a class="nav" href="#resume">📄 Resume</a>
+<a class="nav" href="#education">🎓 Education &amp; Experience</a>
+<a class="nav" href="#skills">🛠️ Skills &amp; Courses</a>
+<a class="nav" href="#portfolio">💼 Portfolio</a>
+<a class="nav" href="#teaching">📚 Teaching Materials</a>
+<a class="nav" href="#certificates">🏅 Certificates</a>
+<a class="nav" href="#contact">✉️ Contact</a>
+<div class="theme"><span id="tlabel">Dark mode</span><button class="icon" id="theme" aria-label="Toggle dark mode">🌙</button></div>
+</nav>
+
+<main>
+<section class="page" id="home">
+<div class="hero">
+<div>
+<p>Hello, I'm</p>
+<h1>Anjali Yadav</h1>
+<div class="role" id="role"></div>
+<p style="color:var(--muted);max-width:46ch">I teach students and build simple digital tools for school work: fee records, results and student data in Calc, and lessons in Impress.I help students develop strong computer, digital and practical skills through structured lessons, hands-on training, assignments and real-world projects.</p>
+<div class="row"><a class="btn primary" href="#portfolio">View my work</a><a class="btn ghost" href="#contact">Contact me</a></div>
+</div>
+<div class="board" aria-hidden="true"><p class="c">Today's lesson</p><p>✔ Writer: letters &amp; reports</p><p>✔ Calc: formulas &amp; results</p><p>✔ Impress: slides</p><p>✔ HTML &amp; CSS basics</p></div>
+</div>
+<div class="stats"><div class="stat"><b data-n="2">2</b> Year teaching</div><div class="stat"><b data-n="4">4</b>Certificates</div><div class="stat"><b data-n="5">0</b>Projects</div><div class="stat"><b data-n="2">0</b>Languages</div></div>
+</section>
+
+<section class="page" id="about">
+<h2 class="t">About me</h2><p class="sub">Teacher, learner and builder of practical school tools.</p>
+<div class="two"><div>
+<p>I am Anjali Yadav, a teacher with 5 Month of experience. I enjoy explaining ideas in a simple way so every student can follow, and I love reading and learning new things myself.</p><br>
+<p>Along with teaching, I use computer skills to make school work easier. I have built student, fee and result management sheets in LibreOffice Calc and made presentations in Impress. I am also learning HTML, CSS and basic Python.</p><br>
+<p>My goal is to combine good teaching with technology, so classrooms become more organised and more interesting.</p>
+</div>
+<div class="card"><h3>Quick facts</h3><p><b>Role:</b> Teacher<br><b>Experience:</b> 2 Year<br><b>Languages:</b> Hindi, English<br><b>Hobbies:</b> Teaching, reading<br><b>Studying:</b> MSC (2026)</p></div></div>
+</section>
+
+<section class="page" id="resume">
+<div class="row noprint" style="justify-content:space-between;align-items:center;margin:0 0 20px"><div><h2 class="t">Resume</h2></div><button class="btn primary" onclick="window.print()">⬇ Download / Print PDF</button></div>
+<div class="resume">
+<h2>Anjali Yadav</h2><p>Teacher · ay146173@gmail.com · 7275645298</p>
+<h3>Summary</h3><p>Teacher with 2 year of experience, skilled in LibreOffice and basic web development, creating digital tools for student, fee and result management.</p>
+<h3>Education</h3><p>MSC (2026), Maharaja Suhel Dev University, Azamgarh (Present)<br>BSc (2026), Maharaja Suhel Dev University, Azamgarh , (77.5%)<br>12th (2023), UP Board , (73.80%)<br>10th (2021), UP Board , (85.60%)</p>
+<h3>Experience</h3><p>Teacher, 5 Month(Present)</p>
+<h3>Skills</h3><p>HTML, CSS, basic Python, LibreOffice Writer, Calc, Impress, teaching</p>
+<h3>Certificates</h3><p>CCC (2025, NIELIT)<br>BCC (2024, Yamuna Digital Research Foundation, Bhimpura No 1, Ballia)<br>BCC (2024, Yamuna Digital Research Foundation, Bhimpura No 1, Ballia)</p>
+<h3>Languages</h3><p>Hindi, English</p>
+</div>
+</section>
+
+<section class="page" id="education">
+<h2 class="t">Education &amp; Experience</h2><p class="sub">My learning and work, newest first.</p>
+<div class="tl">
+<div><small>Present</small><h3>Teacher</h3><p>2 year of teaching experience, plus digital record keeping for students.</p></div>
+<div><small>2026 – Present</small><h3>M.Sc. (Pursuing)</h3><p>Maharaja Suhel Dev University, Azamgarh</p></div>
+<div><small>2026</small><h3>BSc</h3><p>Maharaja Suhel Dev University, Azamgarh<br><b>Percentage: 77.5%</b></p></div>
+<div><small>2023</small><h3>12th, UP Board</h3><p>Higher secondary education<br><b>Percentage: 73.80%</b></p></div>
+<div><small>2021</small><h3>10th, UP Board</h3><p>Secondary education<br><b>Percentage: 85.60%</b></p></div>
+</div>
+</div>
+</section>
+
+<section class="page" id="skills">
+<h2 class="t">Skills &amp; Courses</h2><p class="sub">Tools I use every day, and the courses behind them.</p>
+<div class="two"><div id="bars">
+<div class="bar"><span>Teaching<em>90%</em></span><div class="track"><div class="fill" data-w="90"></div></div></div>
+<div class="bar"><span>LibreOffice Writer<em>85%</em></span><div class="track"><div class="fill" data-w="85"></div></div></div>
+<div class="bar"><span>LibreOffice Calc / Excel<em>85%</em></span><div class="track"><div class="fill" data-w="85"></div></div></div>
+<div class="bar"><span>LibreOffice Impress<em>80%</em></span><div class="track"><div class="fill" data-w="80"></div></div></div>
+<div class="bar"><span>HTML &amp; CSS<em>70%</em></span><div class="track"><div class="fill" data-w="70"></div></div></div>
+<div class="bar"><span>Python (basic)<em>45%</em></span><div class="track"><div class="fill" data-w="45"></div></div></div>
+</div>
+<div><h3 style="margin-bottom:12px">Courses</h3><div class="tags"><span>CCC · NIELIT · 2025</span><span>BCC · 2024</span></div><br><h3 style="margin-bottom:12px">Languages</h3><div class="tags"><span>Hindi</span><span>English</span></div></div></div>
+</section>
+
+<section class="page" id="portfolio">
+<h2 class="t">Portfolio</h2><p class="sub">Projects I made for school work. Each button opens the live file.</p>
+<div class="grid">
+<div class="card"><div class="em">🧑‍🎓</div><h3>Student Management System</h3><p>Student details, class lists and attendance in one sheet.</p><a class="btn primary" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/14XBXYM32Bo-2TDZ4SeNrukdN1P8OBEiKvI61643SxZ0/edit">Open project</a></div>
+<div class="card"><div class="em">💰</div><h3>Fee Management System</h3><p>Track fees paid, pending dues and totals for every student.</p><a class="btn primary" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/14XBXYM32Bo-2TDZ4SeNrukdN1P8OBEiKvI61643SxZ0/edit?gid=1629152179#gid=1629152179">Open project</a></div>
+<div class="card"><div class="em">📝</div><h3>Result Management</h3><p>Marks, totals, percentage and grades calculated with formulas.</p><a class="btn primary" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1pRKX36A-XXFgMVTyZby3xLrOFWu_bP0RIQlgo-cAcuE/edit?usp=sharing">Open project</a></div>
+<div class="card"><div class="em">📊</div><h3>Excel / Calc Projects</h3><p>Spreadsheets using formulas, charts and data sorting.</p><a class="btn primary" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/14XBXYM32Bo-2TDZ4SeNrukdN1P8OBEiKvI61643SxZ0/edit?gid=1485811792#gid=1485811792">Open project</a></div>
+<div class="card"><div class="em">🎞️</div><h3>Impress / PPT Projects</h3><p>Presentations made for lessons and school topics.</p><a class="btn primary" target="_blank" rel="noopener" href="https://docs.google.com/presentation/d/1b-w_931cbASc7n7tJVVy4TY7cCgHpSSpvXA5ptO35BA/edit?slide=id.p#slide=id.p">Open project</a></div>
+</div>
+</section>
+
+<section class="page" id="teaching">
+<h2 class="t">Teaching Materials</h2><p class="sub">Notes and resources for students. Tap a card to see what it covers.</p>
+<div class="grid">
+<div class="card"><div class="em">📘</div><h3>Computer Basics</h3><p>Parts of a computer, input and output devices, and safe use.</p><a class="btn ghost" target="_blank" rel="noopener" href="https://docs.google.com/presentation/d/1zBLys7pIpqHiCT6h0Q8Pxs81WqKnmQmsB7nC7hYS0BY/edit?usp=sharing">Open slides</a></div>
+<div class="card"><div class="em">✍️</div><h3>Writer Notes</h3><p>Typing, formatting, tables and printing documents.</p><a class="btn ghost" target="_blank" rel="noopener" href="https://docs.google.com/presentation/d/1K7tvJ9YvHc-R8RL3c9DsPSbE8DPyO6k2URAQXj9UFBE/edit?usp=sharing">Open slides</a></div>
+<div class="card"><div class="em">🧮</div><h3>Calc Notes</h3><p>Formulas, SUM, AVERAGE, IF and charts with exercises.</p><a class="btn ghost" target="_blank" rel="noopener" href="https://docs.google.com/presentation/d/1Jj4G3kndhjuEOB6VQlIo3ETGxEpu-1N3N2pDC2rqCnQ/edit?usp=sharing">Open slides</a></div>
+<div class="card"><div class="em">🖥️</div><h3>Impress Slides Notes</h3><p>Ready slides for classroom lessons.</p><a class="btn ghost" target="_blank" rel="noopener" href="https://docs.google.com/presentation/d/1i2qptE41EGAGqixC4jO2zRdRdr94sFFtHl7NFS-Ompk/edit?usp=sharing">Open slides</a></div>
+<div class="card"><div class="em">🌐</div><h3>HTML & CSS Notes</h3><p>HTML & CSS & Javascript Notes</p><a class="btn ghost" target="_blank" rel="noopener" href="https://docs.google.com/presentation/d/13EooNwuT72xvTNSLH1FY2ORQaS0G1xu7WG6nbVhb1Qk/edit?usp=sharing">Open slides</a></div>
+<div class="card"><div class="em">⚙️</div><h3>CMD Commands Notes</h3><p>Basic command prompt commands like dir, cd, mkdir, copy and cls.p><a class="btn ghost" target="_blank" rel="noopener" href="https://docs.google.com/presentation/d/1S_sWh_UkFTt1MXwrRJms3wBEawIH_jb1YKyB1rrWdA4/edit?usp=sharing">Open Slide</a></div>
+</div>
+
+</section>
+
+<section class="page" id="certificates">
+<h2 class="t">Certificates &amp; Achievements</h2><p class="sub">Computer courses I completed.</p>
+<div class="grid">
+<div class="card"><div class="em">🏅</div><h3>Scout Guide · 2017</h3><p>Scout & Guide Training Camp certificate</p><a class="btn primary" target="_blank" rel="noopener" href="https://drive.google.com/file/d/1a28J04hAhHceWse0nPJ80UxEzXWOy9pu/view?usp=sharing">View certificate</a></div>
+<div class="card"><div class="em">🏅</div><h3> BCC· 2023</h3><p>Basic Computer Course Certificate</p><a class="btn primary" target="_blank" rel="noopener" href="https://drive.google.com/file/d/1IJ7LWB6sgmayBbFBkJS2rR0WqUTn0hLZ/view?usp=sharing">View certificate</a></div>
+<div class="card"><div class="em">🏅</div><h3>Cleanliness Campaign· 2025</h3><p>Cleanliness Campaign certificate.</p><a class="btn primary" target="_blank" rel="noopener" href="https://drive.google.com/file/d/1YKJ724TIQq3nD73g-WZC6_4plO5u7yri/view?usp=sharing">View certificate</a></div>
+<div class="card"><div class="em">🏅</div><h3>CCC· 2025</h3><p>Course on Computer Concepts certificate<p><a class="btn primary" target="_blank" rel="noopener" href="https://drive.google.com/file/d/1VxnxnhCpvuX73TShB4R5iTQDRUUcJnJA/view?usp=sharing">View certificate</a></div>
+</div>
+</section>
+
+<section class="page" id="contact">
+<h2 class="t">Contact</h2><p class="sub">Write to me. The message opens in your email app.</p>
+<div class="two">
+<div class="card"><h3>Anjali Yadav</h3><p>Teacher<br>📞 <a href="tel:7275645298">7275645298</a><br>✉️ <a href="mailto:ay146173@gmail@gmail.com">ay146173@gmail.com</a></p><button class="btn ghost" id="copy">Copy email</button></div>
+<form id="form"><input id="n" placeholder="Your name" required><input id="e" type="email" placeholder="Your email" required><textarea id="m" rows="5" placeholder="Your message" required></textarea><button class="btn primary" type="submit">Send message</button></form>
+</div>
+</section>
+<footer>© <span id="yr"></span> Anjali Yadav. All rights reserved.</footer>
+</main>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const root=document.documentElement;
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2200)}
+/* theme */
+function setTheme(t){root.dataset.theme=t;$('#theme').textContent=t==='dark'?'☀️':'🌙';$('#tlabel').textContent=t==='dark'?'Light mode':'Dark mode';try{localStorage.setItem('theme',t)}catch(e){}}
+let saved=null;try{saved=localStorage.getItem('theme')}catch(e){}
+setTheme(saved||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));
+$('#theme').onclick=()=>setTheme(root.dataset.theme==='dark'?'light':'dark');
+/* menu */
+const side=$('#side'),scrim=$('#scrim');
+function menu(o){side.classList.toggle('open',o);scrim.classList.toggle('on',o)}
+$('#burger').onclick=()=>menu(!side.classList.contains('open'));scrim.onclick=()=>menu(false);
+/* pages */
+function route(){
+const id=(location.hash||'#home').slice(1);const pg=$('#'+id)&&$('#'+id).classList.contains('page')?id:'home';
+$$('.page').forEach(p=>p.classList.toggle('show',p.id===pg));
+$$('.nav').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+pg));
+menu(false);scrollTo(0,0);document.title=($('.nav.active')?.textContent.replace(/^\S+\s/,'')||'Home')+' | Anjali Yadav';
+if(pg==='skills'){$$('.fill').forEach(f=>{f.style.width='0';requestAnimationFrame(()=>setTimeout(()=>f.style.width=f.dataset.w+'%',60))})}
+if(pg==='home'){$$('[data-n]').forEach(c=>{let n=+c.dataset.n,i=0;clearInterval(c.t);c.t=setInterval(()=>{c.textContent=++i;if(i>=n)clearInterval(c.t)},300)})}
+}
+addEventListener('hashchange',route);route();
+/* typing */
+const roles=['Teacher','Digital skills trainer','Calc & Impress creator','Web learner'];let ri=0,ci=0,del=false;
+(function type(){const el=$('#role'),w=roles[ri];el.textContent=w.slice(0,ci);
+if(!del&&ci++===w.length){del=true;return setTimeout(type,1400)}
+if(del&&--ci<0){del=false;ci=0;ri=(ri+1)%roles.length}
+setTimeout(type,del?40:90)})();
+/* buttons */
+$$('[data-toast]').forEach(b=>b.onclick=()=>toast(b.dataset.toast));
+$('#copy').onclick=async()=>{try{await navigator.clipboard.writeText('anjali@gmail.com');toast('Email copied')}catch(e){toast('anjali@gmail.com')}};
+$('#form').onsubmit=e=>{e.preventDefault();const b=encodeURIComponent('From: '+$('#n').value+' ('+$('#e').value+')\n\n'+$('#m').value);location.href='mailto:anjali@gmail.com?subject='+encodeURIComponent('Message from '+$('#n').value)+'&body='+b;toast('Opening your email app')};
+$('#yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
